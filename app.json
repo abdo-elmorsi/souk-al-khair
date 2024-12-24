@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "souq_al_khair",
-    "slug": "souq_al_khair",
+    "slug": "souk-alkhair",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,6 +36,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1b447cb1-fb22-497e-bae8-31951bcdd05a"
+      }
+    },
+    "owner": "abdo_elmorsi"
   }
 }
