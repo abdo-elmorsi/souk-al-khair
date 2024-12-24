@@ -6,82 +6,97 @@ import {
     ScrollView,
     TouchableOpacity,
     SafeAreaView,
+    Image,
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { AntDesign } from "@expo/vector-icons";
+import ParallaxScrollView from "@/components/ParallaxScrollView";
 
 export default function HomeScreen() {
     const colorScheme = useColorScheme();
     const colors = Colors[colorScheme ?? "light"];
 
     return (
-        <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
-            <ScrollView
-                contentContainerStyle={styles.scrollContent}
-                showsVerticalScrollIndicator={false}
+        <SafeAreaView
+            style={[styles.safeArea, { backgroundColor: colors.background }]}
+        >
+            <ParallaxScrollView
+                headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+                headerImage={
+                    <Image
+                        source={require("@/assets/images/logo-600x315.jpeg")}
+                        style={styles.reactLogo}
+                    />
+                }
             >
-                <Text style={[styles.headerText, { color: colors.text }]}>
-                    Welcome to Souq Al-Khair
-                </Text>
-                <Text style={[styles.subHeaderText, { color: colors.icon }]}>
-                    A platform that bridges the gap between donors and those in need.
-                </Text>
+                <ScrollView
+                    contentContainerStyle={styles.scrollContent}
+                    showsVerticalScrollIndicator={false}
+                >
+                    <Text style={[styles.headerText, { color: colors.text }]}>
+                        مرحبا بكم في سوق الخير
+                    </Text>
+                    <Text
+                        style={[styles.subHeaderText, { color: colors.icon }]}
+                    >
+                        منصة تربط بين المتبرعين والمحتاجين.
+                    </Text>
 
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                    About Souq Al-Khair
-                </Text>
-                <Text style={[styles.paragraph, { color: colors.icon }]}>
-                    Souq Al-Khair is an innovative platform designed to make charity
-                    and donations easier and more accessible. Whether it’s financial
-                    support, in-kind contributions like clothes or food, or even
-                    volunteering, Souq Al-Khair makes it seamless to give back and
-                    make a difference.
-                </Text>
+                    <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                        عن سوق الخير
+                    </Text>
+                    <Text style={[styles.paragraph, { color: colors.icon }]}>
+                        سوق الخير هو منصة مبتكرة مصممة لجعل العمل الخيري
+                        والتبرعات أسهل وأكثر وصولاً. سواء كان ذلك دعمًا ماليًا،
+                        أو مساهمات عينية مثل الملابس أو الطعام، أو حتى التطوع،
+                        فإن سوق الخير يجعل من السهل العطاء وإحداث فرق.
+                    </Text>
 
-                {/* Quick Actions */}
-                <View style={styles.actionContainer}>
-                    <ActionButton
-                        title="Donate"
-                        icon="heart"
-                        colors={colors}
-                        onPress={() => console.log("Navigate to Donations")}
-                    />
-                    <ActionButton
-                        title="Campaigns"
-                        icon="rocket1"
-                        colors={colors}
-                        onPress={() => console.log("Navigate to Campaigns")}
-                    />
-                    <ActionButton
-                        title="Volunteer"
-                        icon="team"
-                        colors={colors}
-                        onPress={() => console.log("Navigate to Volunteering")}
-                    />
-                </View>
+                    {/* Quick Actions */}
+                    <View style={styles.actionContainer}>
+                        <ActionButton
+                            title="تبرع"
+                            icon="heart"
+                            colors={colors}
+                            onPress={() => console.log("انتقال إلى التبرعات")}
+                        />
+                        <ActionButton
+                            title="حملات"
+                            icon="rocket1"
+                            colors={colors}
+                            onPress={() => console.log("انتقال إلى الحملات")}
+                        />
+                        <ActionButton
+                            title="تطوع"
+                            icon="team"
+                            colors={colors}
+                            onPress={() => console.log("انتقال إلى التطوع")}
+                        />
+                    </View>
 
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                    Features
-                </Text>
-                <View style={styles.featuresContainer}>
-                    <FeatureItem
-                        title="Financial & In-kind Donations"
-                        description="Donate with ease and flexibility—financially or with essential items like clothes and food."
-                        colors={colors}
-                    />
-                    <FeatureItem
-                        title="Campaigns"
-                        description="Create or join charity campaigns and amplify your impact."
-                        colors={colors}
-                    />
-                    <FeatureItem
-                        title="Volunteer Opportunities"
-                        description="Discover and engage in volunteering opportunities within your community."
-                        colors={colors}
-                    />
-                </View>
-            </ScrollView>
+                    <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                        الميزات
+                    </Text>
+                    <View style={styles.featuresContainer}>
+                        <FeatureItem
+                            title="التبرعات المالية والعينية"
+                            description="تبرع بسهولة ومرونة - سواء بشكل مالي أو بأشياء أساسية مثل الملابس والطعام."
+                            colors={colors}
+                        />
+                        <FeatureItem
+                            title="حملات"
+                            description="أنشئ أو انضم إلى حملات خيرية وزد من تأثيرك."
+                            colors={colors}
+                        />
+                        <FeatureItem
+                            title="فرص التطوع"
+                            description="اكتشف وشارك في فرص التطوع في مجتمعك."
+                            colors={colors}
+                        />
+                    </View>
+                </ScrollView>
+            </ParallaxScrollView>
         </SafeAreaView>
     );
 }
@@ -134,11 +149,19 @@ function FeatureItem({
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+        direction: "rtl",
     },
     scrollContent: {
         paddingHorizontal: 16,
-        paddingTop: 40, // Ensures spacing below the SafeAreaView top
-        paddingBottom: 16, // Space for potential footers
+        paddingTop: 40,
+        paddingBottom: 16,
+    },
+    reactLogo: {
+        height: "100%",
+        width: "100%",
+        bottom: 0,
+        left: 0,
+        position: "absolute",
     },
     headerText: {
         fontSize: 24,
