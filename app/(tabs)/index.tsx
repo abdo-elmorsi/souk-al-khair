@@ -6,12 +6,11 @@ import {
     ScrollView,
     TouchableOpacity,
     SafeAreaView,
-    Image,
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { AntDesign } from "@expo/vector-icons";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { SIZES } from "@/constants";
 
 export default function HomeScreen() {
     const colorScheme = useColorScheme();
@@ -21,82 +20,70 @@ export default function HomeScreen() {
         <SafeAreaView
             style={[styles.safeArea, { backgroundColor: colors.background }]}
         >
-            <ParallaxScrollView
-                headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-                headerImage={
-                    <Image
-                        source={require("@/assets/images/logo-600x315.jpeg")}
-                        style={styles.reactLogo}
-                    />
-                }
+            <ScrollView
+                contentContainerStyle={styles.scrollContent}
+                showsVerticalScrollIndicator={false}
             >
-                <ScrollView
-                    contentContainerStyle={styles.scrollContent}
-                    showsVerticalScrollIndicator={false}
-                >
-                    <Text style={[styles.headerText, { color: colors.text }]}>
-                        مرحبا بكم في سوق الخير
-                    </Text>
-                    <Text
-                        style={[styles.subHeaderText, { color: colors.icon }]}
-                    >
-                        منصة تربط بين المتبرعين والمحتاجين.
-                    </Text>
+                <Text style={[styles.headerText, { color: colors.text }]}>
+                    مرحبا بكم في سوق الخير
+                </Text>
+                <Text style={[styles.subHeaderText, { color: colors.icon }]}>
+                    منصة تربط بين المتبرعين والمحتاجين.
+                </Text>
 
-                    <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                        عن سوق الخير
-                    </Text>
-                    <Text style={[styles.paragraph, { color: colors.icon }]}>
-                        سوق الخير هو منصة مبتكرة مصممة لجعل العمل الخيري
-                        والتبرعات أسهل وأكثر وصولاً. سواء كان ذلك دعمًا ماليًا،
-                        أو مساهمات عينية مثل الملابس أو الطعام، أو حتى التطوع،
-                        فإن سوق الخير يجعل من السهل العطاء وإحداث فرق.
-                    </Text>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                    عن سوق الخير
+                </Text>
+                <Text style={[styles.paragraph, { color: colors.icon }]}>
+                    سوق الخير هو منصة مبتكرة مصممة لجعل العمل الخيري والتبرعات
+                    أسهل وأكثر وصولاً. سواء كان ذلك دعمًا ماليًا، أو مساهمات
+                    عينية مثل الملابس أو الطعام، أو حتى التطوع، فإن سوق الخير
+                    يجعل من السهل العطاء وإحداث فرق.
+                </Text>
 
-                    {/* Quick Actions */}
-                    <View style={styles.actionContainer}>
-                        <ActionButton
-                            title="تبرع"
-                            icon="heart"
-                            colors={colors}
-                            onPress={() => console.log("انتقال إلى التبرعات")}
-                        />
-                        <ActionButton
-                            title="حملات"
-                            icon="rocket1"
-                            colors={colors}
-                            onPress={() => console.log("انتقال إلى الحملات")}
-                        />
-                        <ActionButton
-                            title="تطوع"
-                            icon="team"
-                            colors={colors}
-                            onPress={() => console.log("انتقال إلى التطوع")}
-                        />
-                    </View>
+                {/* Quick Actions */}
+                <View style={styles.actionContainer}>
+                    <ActionButton
+                        title="تبرع"
+                        icon="heart"
+                        colors={colors}
+                        onPress={() => console.log("انتقال إلى التبرعات")}
+                    />
+                    <ActionButton
+                        title="حملات"
+                        icon="rocket1"
+                        colors={colors}
+                        onPress={() => console.log("انتقال إلى الحملات")}
+                    />
+                    <ActionButton
+                        title="تطوع"
+                        icon="team"
+                        colors={colors}
+                        onPress={() => console.log("انتقال إلى التطوع")}
+                    />
+                </View>
 
-                    <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                        الميزات
-                    </Text>
-                    <View style={styles.featuresContainer}>
-                        <FeatureItem
-                            title="التبرعات المالية والعينية"
-                            description="تبرع بسهولة ومرونة - سواء بشكل مالي أو بأشياء أساسية مثل الملابس والطعام."
-                            colors={colors}
-                        />
-                        <FeatureItem
-                            title="حملات"
-                            description="أنشئ أو انضم إلى حملات خيرية وزد من تأثيرك."
-                            colors={colors}
-                        />
-                        <FeatureItem
-                            title="فرص التطوع"
-                            description="اكتشف وشارك في فرص التطوع في مجتمعك."
-                            colors={colors}
-                        />
-                    </View>
-                </ScrollView>
-            </ParallaxScrollView>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                    الميزات
+                </Text>
+                <View style={styles.featuresContainer}>
+                    <FeatureItem
+                        title="التبرعات المالية والعينية"
+                        description="تبرع بسهولة ومرونة - سواء بشكل مالي أو بأشياء أساسية مثل الملابس والطعام."
+                        colors={colors}
+                    />
+                    <FeatureItem
+                        title="حملات"
+                        description="أنشئ أو انضم إلى حملات خيرية وزد من تأثيرك."
+                        colors={colors}
+                    />
+                    <FeatureItem
+                        title="فرص التطوع"
+                        description="اكتشف وشارك في فرص التطوع في مجتمعك."
+                        colors={colors}
+                    />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -136,7 +123,7 @@ function FeatureItem({
 }) {
     return (
         <View style={styles.featureItem}>
-            <Text style={[styles.featureTitle, { color: colors.text }]}>
+            <Text style={[styles.featureTitle, { color: colors.background }]}>
                 {title}
             </Text>
             <Text style={[styles.featureDescription, { color: colors.icon }]}>
@@ -149,22 +136,15 @@ function FeatureItem({
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        direction: "rtl",
+        direction: "rtl", // Apply RTL direction
     },
     scrollContent: {
-        paddingHorizontal: 16,
-        paddingTop: 40,
+        paddingTop: 50,
         paddingBottom: 16,
-    },
-    reactLogo: {
-        height: "100%",
-        width: "100%",
-        bottom: 0,
-        left: 0,
-        position: "absolute",
+        paddingHorizontal: 16,
     },
     headerText: {
-        fontSize: 24,
+        fontSize: SIZES.xLarge,
         fontWeight: "bold",
         marginBottom: 8,
         textAlign: "center",
@@ -172,7 +152,6 @@ const styles = StyleSheet.create({
     subHeaderText: {
         fontSize: 16,
         marginBottom: 16,
-        textAlign: "center",
     },
     sectionTitle: {
         fontSize: 18,
