@@ -15,7 +15,7 @@ const _layout = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            <Text style={{ textAlign: "center", marginVertical: 10 }}>Test Above</Text>
+            {/* <Text style={{ textAlign: "center", marginVertical: 10 }}>Test Above</Text> */}
             <Stack
                 screenOptions={{
                     headerShown: false, // Disable headers for these screens
@@ -25,7 +25,7 @@ const _layout = () => {
             >
                 <Slot />
             </Stack>
-            <Text style={{ textAlign: "center", marginVertical: 10 }}>Test Below</Text>
+            {/* <Text style={{ textAlign: "center", marginVertical: 10 }}>Test Below</Text> */}
         </View>
     );
 };
