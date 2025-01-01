@@ -2,7 +2,7 @@
     "expo": {
         "name": "سوق الخير",
         "slug": "souk-alkhair",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "orientation": "portrait",
         "icon": "./assets/images/logo-60x60.jpeg",
         "scheme": "myapp",
